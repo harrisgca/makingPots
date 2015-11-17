@@ -1,0 +1,27 @@
+<template name="index">
+  <div class="container-fluid">
+    <h1>Phony Blog Posts</h1>
+    <hr>
+    {{#each posts}}
+      <h2>{{this.title}}</h2>
+      <p>
+        {{this.content}}
+      </p>
+      Posted:
+      {{this.createdAt}}
+      --
+      <a href="/{{this._id}}">Permalink</a>
+    {{/each}}
+
+    {{>newPostForm}}
+
+  </div>
+</template>
+
+<template name="newPostForm">
+  {{#autoForm type="insert" id="newPostForm" collection="Posts"}}
+    {{> afFieldInput type="text" placeholder="Title" name="title"}}
+    {{> afFieldInput type="textarea" placeholder="Content" name="content"}}
+    <button>Create New Post</button>
+  {{/autoForm}}
+</template>

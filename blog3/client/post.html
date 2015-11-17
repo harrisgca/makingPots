@@ -1,0 +1,21 @@
+<template name="post">
+  <div class="container-fluid">
+    <h1>{{post.title}}</h1>
+    <p>
+      {{post.content}}
+    </p>
+  </div>
+  <hr>
+  <h2>Comments</h2>
+  <ol>
+    {{#each comments}}
+      <li>{{this.content}} -- {{this.createdAt}}</li>
+    {{/each}}
+  </ol>
+
+  {{#autoForm type="insert" collection="Comments" id="addComment"}}
+    {{>afFieldInput type="textarea" name="content"}}
+    {{>afFieldInput type="hidden" value=postId name="postId"}}
+    <button>Create Comment</button>
+  {{/autoForm}}
+</template>
