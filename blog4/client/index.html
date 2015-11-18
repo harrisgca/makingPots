@@ -1,0 +1,18 @@
+<template name="index">
+  <h1>Phony blog posts</h1>
+  <hr>
+  {{#each posts}}
+    <h2>{{this.title}}</h2>
+    <p>
+      {{this.content}}
+    </p>
+    <span>Posted on: {{this.createdAt}} -- </span>
+    <a href="/{{this._id}}">Permalink</a>
+  {{/each}}
+
+  {{#autoForm type="insert" collection="Posts" id="newPost"}}
+    {{> afFieldInput type="text" placeholder="Title" name="title"}}
+    {{> afFieldInput type="textarea" placeholder="Content" name="content"}}
+    <input type="submit" value="Add new post">
+  {{/autoForm}}
+</template>

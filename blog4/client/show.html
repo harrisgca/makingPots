@@ -1,0 +1,19 @@
+<template name="show">
+  <h1>{{post.title}}</h1>
+  <p>
+    {{post.content}}
+  </p>
+
+  <hr>
+  <h3>Comments</h3>
+  <ol>
+    {{#each comments}}
+      <li>{{this.content}}</li>
+    {{/each}}
+  </ol>
+  {{#autoForm type="insert" collection="Comments" id="addComment"}}
+    {{> afFieldInput name="content" type="text" placeholder="Comment"}}
+    {{> afFieldInput name="postId" type="hidden" value=post._id}}
+    <input type="submit" value="Leave Comment">
+  {{/autoForm}}
+</template>
