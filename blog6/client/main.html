@@ -1,0 +1,28 @@
+<head>
+  <title>I am a blog</title>
+</head>
+
+<body>
+  {{>loginButtons}}
+  <h1>Phony blog posts</h1>
+    {{> posts}}
+</body>
+
+<template name="posts">
+  {{#each posts}}
+    <h3>{{this.title}}</h3>
+    <p>
+      {{this.content}}
+    </p>
+    <span><em>{{this.author}}</em> -- {{datePublished}}</span>
+  {{/each}}
+
+  <hr>
+
+  {{#autoForm type="insert" id="newpost" collection="Posts"}}
+    {{>afFieldInput type="text" name="title"}}
+    {{>afFieldInput type="textarea" name="content"}}
+    {{>afFieldInput type="hidden" name="userId" value=currentUser._id}}
+    <input type="submit" value="Create Post">
+  {{/autoForm}}
+</template>
