@@ -1,0 +1,17 @@
+<template name="posts">
+  Posts go here
+  {{#each posts}}
+    <h3>{{this.title}}</h3>
+    <p>
+      {{this.content}}
+    </p>
+  {{/each}}
+
+  <hr>
+
+  {{#autoForm type="insert" id="addPosts" collection="Posts"}}
+    {{>afFieldInput type="text" placeholder="title" name="title"}}
+    {{>afFieldInput type="textarea" placeholder="Content" name="content"}}
+    <input type="submit" value="Create Post">
+  {{/autoForm}}
+</template>
