@@ -1,0 +1,37 @@
+<head>
+  <title>Routing App</title>
+</head>
+
+<body></body>
+
+<template name="Layout">
+  <div class="container">
+    {{>yield}}
+  </div>
+</template>
+
+<template name="Blog">
+  <h1>Blog</h1>
+
+  <a href="/blog/new">New Article</a>
+  <ul>
+    {{#each articles}}
+      <li>
+        {{#linkTo route='article.show'}}
+          <div>
+            Bobby is dead!
+          </div>
+          {{title}}
+        {{/linkTo}}
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="Article">
+  <h1>Article</h1>
+</template>
+
+<template name="ArticleNew">
+  <h1>Create New Article</h1>
+</template>
